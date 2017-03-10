@@ -1,0 +1,15 @@
+<h3> Add a Product </h3>
+
+<%= form_tag "/product_added", method: :post do %>
+
+	Produce Name: <input type="text" name="name">
+	<br>
+	Price per Lb: <input type="text" name="price">
+	<br>
+	Item Description: <input type="text" name="description">
+	<br>
+	image url: <input type="text" name="image">
+	<br>
+  <input type="submit"  value="Add Product">
+
+<%end%>
