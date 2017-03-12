@@ -1,0 +1,17 @@
+<h3> Edit Product </h3>
+
+<%= form_tag "/products/#{@produce.id}", method: :patch do %>
+
+	Produce Name: <input type="text" name="name" value ="<%= @produce.name %>" >
+	<br>
+	Price per Lb: <input type="text" name="price" value ="<%= @produce.price %>" >
+	<br>
+	Item Description: <input type="text" name="description" value ="<%= @produce.description %>">
+	<br>
+	image url: <input type="text" name="image" value = "<%= @produce.image %>">
+	<br>
+  <input type="submit"  value="Edit Product">
+  <br>
+  <img src ="<%= @produce.image %>" width="200" ></img>
+
+<%end%>

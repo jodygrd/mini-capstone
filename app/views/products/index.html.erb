@@ -1,0 +1,14 @@
+<h3> All Products </h3>
+
+<div class="list">
+<% @produce.each do |product| %>
+	<p>
+		<img src ="<%= product.image %>" width="200" ></img>
+		<br>
+				<a href="/products/<%=product.id%>"> <%= product.name %> </a>
+		<br>
+		<%= product.price + "/lb" %> 
+	</p>
+	<% end %>
+
+</div>

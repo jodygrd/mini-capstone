@@ -1,13 +1,18 @@
 class ProductsController < ApplicationController
 
-	def display_all_products
-		@products = Produce.all
+	def index
+		@produce = Produce.all
 	end
 
-	def add_product
+	def show
+		produce_id = params[:id]
+		@produce = Produce.find_by(id: produce_id)
+  end
+
+	def new
 	end
 
-	def product_added
+	def create
 
 		name_input = params[:name]
 		price_input = params[:price]
@@ -15,6 +20,30 @@ class ProductsController < ApplicationController
 		image_input = params[:image]
 
     @produce = Produce.create({name: name_input, price: price_input, description: description_input, image: image_input})
+
+	end
+
+	def edit
+		produce_id = params[:id]
+		@produce = Produce.find_by(id: produce_id)
+
+	end
+
+	def update
+		@produce = Produce.find_by(id: params[:id])
+		@produce.name = params[:name]
+		@produce.price = params[:price]
+		@produce.image = params[:image]
+		@produce.save
+
+		redirect_to "/products/#{@produce.id}"
+	end
+
+	def destroy
+		@produce = Produce.find_by(id: params[:id])
+		@produce.destroy
+   
+    redirect_to "/products"
 
 	end
 

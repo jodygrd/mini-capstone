@@ -1,0 +1,11 @@
+
+<img src ="<%= @produce.image %>" width="200" ></img>
+<br>
+<%= @produce.name %> 
+<br>
+<%= @produce.price + "/lb" %> 
+<br>
+<%= form_tag "/products/#{@produce.id}", method: :delete do %>
+Would you like to delete this product? 
+ <input type="submit"  value="DELETE PRODUCT">
+<%end%>

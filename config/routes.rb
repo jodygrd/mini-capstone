@@ -1,10 +1,23 @@
 Rails.application.routes.draw do
-
-	get "/display_all_products" => "products#display_all_products"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get "/add_product" => "products#add_product"
-  post "/product_added" => "products#product_added"
+  #Resful Routes
 
+  #Index
+	get "/products" => "products#index"
+
+	#New and Create
+  get "/products/new" => "products#new"
+  post "/products" => "products#create"
+
+	#Show
+	get "/products/:id" => "products#show"
+
+	#Edit and Update
+	get "/products/:id/edit" => "products#edit"
+	patch "/products/:id" => "products#update"
+
+  #Destroy
+  delete "/products/:id" => "products#destroy"
 
 
 end
