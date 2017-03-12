@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   #Index
 	get "/products" => "products#index"
+	post "/products" => "products#create"
 
 	#New and Create
   get "/products/new" => "products#new"

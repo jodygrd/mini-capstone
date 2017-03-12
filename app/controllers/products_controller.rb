@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
 
 	def index
 		@produce = Produce.all
+
 	end
 
 	def show
@@ -20,6 +21,9 @@ class ProductsController < ApplicationController
 		image_input = params[:image]
 
     @produce = Produce.create({name: name_input, price: price_input, description: description_input, image: image_input})
+
+    redirect_to "/products"
+
 
 	end
 
