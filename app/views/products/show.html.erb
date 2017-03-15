@@ -1,28 +1,19 @@
 
-	<%= form_tag "/products", method: :post do %>
-	Product Name: <input type="text" name="name">
-	<br>
-	Product Price Per Pound: <input type="text" name="price">
-	<br>
-	Product Description: <input type="text" name="description">
-	<br>
-	Image URL: <input type="text" name="image">
-	<br>
-	<input type="submit" value="Add a Product!">
 
-	<% end %>
+	<img src ="<%= @produce.image %>" width="200" ></img>
+	<br>
+	<%= @produce.name %> 
+	<br>
+	<%= @produce.price + "/lb" %> 
+	<br>
+	<%= @produce.description %> 
+	<br>
 
 
-<img src ="<%= @produce.image %>" width="200" ></img>
-<br>
-<%= @produce.name %> 
-<br>
-<%= @produce.price + "/lb" %> 
-<br>
 
-<div class="container">
 	<%= form_tag "/products/#{@produce.id}", method: :delete do %>
 		Would you like to delete this product? 
+		<br>
 		<input type="submit"  value="DELETE PRODUCT">
 	<%end%>
-</div>
+

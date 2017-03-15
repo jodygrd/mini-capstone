@@ -22,7 +22,8 @@ class ProductsController < ApplicationController
 
     @produce = Produce.create({name: name_input, price: price_input, description: description_input, image: image_input})
 
-    redirect_to "/products"
+    flash[:success] = "New Product Created!"
+    redirect_to "/products/#{@produce.id}"
 
 
 	end
@@ -34,21 +35,20 @@ class ProductsController < ApplicationController
 	end
 
 	def update
-		@produce = Produce.find_by(id: params[:id])
-		@produce.name = params[:name]
-		@produce.price = params[:price]
-		@produce.image = params[:image]
-		@produce.save
+		@produce = Produce.find(params[:id])
 
+		@produce.update({name: params[:name], price: params[:price], image: params[:image], description: params[:description]})
+
+		flash[:success] = "Product updated!"
 		redirect_to "/products/#{@produce.id}"
 	end
 
 	def destroy
-		@produce = Produce.find_by(id: params[:id])
-		@produce.destroy
+		produce = Produce.find_by(id: params[:id])
+		produce.destroy
    
+    flash[:danger] = "Product deleted!"
     redirect_to "/products"
-
 	end
 
 end
