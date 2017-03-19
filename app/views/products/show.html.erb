@@ -4,11 +4,17 @@
 	<br>
 	<%= @produce.name %> 
 	<br>
-	<%= @produce.price + "/lb" %> 
+	<%= @produce.price.to_s + "/lb" %> 
+	<br>
+	<%= @produce.sale_message %>
+	<br>
+	Tax: <%= @produce.tax %> 
+	<br>
+	Total: <%= @produce.total %> 
 	<br>
 	<%= @produce.description %> 
 	<br>
-
+ <%=link_to "update item?", "/products/#{@produce.id}/edit" %>
 
 
 	<%= form_tag "/products/#{@produce.id}", method: :delete do %>

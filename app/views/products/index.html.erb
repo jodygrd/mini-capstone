@@ -1,34 +1,37 @@
 <h3> All Products </h3>
 
-<div class="row">
-	<% @produce.each_slice(3) do |three_products| %>
-		<% @three_products.each do |product| %>
-			<div class="col-md-4">
-				<p>
+<a href="/products?sort=name&sort_order=asc">Sort by name Ascending</a>
+ <br />
+<a href="/products?sort=name&sort_order=desc">Sort by name Descending</a>
+<br />
+<a href="/products?sort=price&sort_order=asc">Sort by price Ascending</a>
+ <br />
+<a href="/products?sort=price&sort_order=desc">Sort by price Descending</a>
+<br />
+<a href="/products?discount=price">Show Discounted Items</a>
+
+
+<%= form_tag "/search", method: :post do %>
+ Search: <input type="text" name="search_term">
+ <input type="submit" value ="Search!"
+<% end %>
+ 
+
+<% @products.each_slice(3) do |three_products| %>
+	<div class="row">
+		<% three_products.each do |product| %>
+			<div class="col-lg-3 col-md-4 col-sm-6">
+			  <div class="well">
+					<h3><a href="/products/<%=product.id%>"> <%= product.name %> </a> </h3>
 					<img src ="<%= product.image %>" width="200" ></img>
+						<br>
+					<%= "$ #{product.price}0 /lb" %> 
 					<br>
-							<a href="/products/<%=product.id%>"> <%= product.name %> </a>
-					<br>
-					<%= product.price + "/lb" %> 
-				</p>
+					<%= "#{product.in_stock}" %>
+				</div>
 			</div>
 		<% end %>
-	<% end %>
-</div>
+	</div>
+<% end %>
 
 
-
-
-<h3> Add a New Product! </h3>
-	<%= form_tag "/products", method: :post do %>
-		Product Name: <input type="text" name="name">
-		<br>
-		Product Price Per Pound: <input type="text" name="price">
-		<br>
-		Product Description: <input type="text" name="description">
-		<br>
-		Image URL: <input type="text" name="image">
-		<br>
-		<input type="submit" value="Add a Product!">
-
-	<% end %>

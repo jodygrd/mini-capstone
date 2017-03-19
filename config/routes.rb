@@ -20,5 +20,9 @@ Rails.application.routes.draw do
   #Destroy
   delete "/products/:id" => "products#destroy"
 
+  get "/discount" => "products#discount"
+
+  #search
+  post "/search" => "products#search"
 
 end
