@@ -1,0 +1,12 @@
+<h3> add a supplier </h3>
+
+<%= form_tag "/suppliers", method: :post do%>
+
+	Supplier name: <input type="text" name="name">
+	<br>
+	Supplier email: <input type="text" name="email">
+	<br>
+	Supplier phoneL <input type="text" name="phone">
+	<br>
+	<input type="submit" value="Add Supplier">
+<%end%>

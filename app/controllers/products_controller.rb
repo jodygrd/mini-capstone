@@ -16,10 +16,11 @@ class ProductsController < ApplicationController
 			@products = Produce.all
 		end 
 
+
 	end
 
 	def show
-	  if params [:id] == "random"
+	  if params[:id] == "random"
 	  	@produce = Produce.all.sample
 	  else
 			produce_id = params[:id]

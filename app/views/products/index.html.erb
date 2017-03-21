@@ -23,7 +23,7 @@
 			<div class="col-lg-3 col-md-4 col-sm-6">
 			  <div class="well">
 					<h3><a href="/products/<%=product.id%>"> <%= product.name %> </a> </h3>
-					<img src ="<%= product.image %>" width="200" ></img>
+					<img src ="<%= product.images.first.url %>" width="200" ></img>
 						<br>
 					<%= "$ #{product.price}0 /lb" %> 
 					<br>

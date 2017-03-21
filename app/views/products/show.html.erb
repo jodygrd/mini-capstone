@@ -1,25 +1,36 @@
 
 
-	<img src ="<%= @produce.image %>" width="200" ></img>
-	<br>
-	<%= @produce.name %> 
-	<br>
-	<%= @produce.price.to_s + "/lb" %> 
-	<br>
-	<%= @produce.sale_message %>
-	<br>
-	Tax: <%= @produce.tax %> 
-	<br>
-	Total: <%= @produce.total %> 
-	<br>
-	<%= @produce.description %> 
-	<br>
- <%=link_to "update item?", "/products/#{@produce.id}/edit" %>
-
-
-	<%= form_tag "/products/#{@produce.id}", method: :delete do %>
-		Would you like to delete this product? 
-		<br>
-		<input type="submit"  value="DELETE PRODUCT">
-	<%end%>
-
+	<div class="row">
+		<div class="col-md-4">
+			<% @produce.images.each do |image| %> 
+				<div class="well">
+					<img src ="<%= image.url %>" width="200" ></img>
+					<br>
+				</div>
+			<%end%>	
+		</div>
+		<div class="col-md-8">
+			<div class="well">
+				<%= @produce.name %> 
+				<br>
+				<%= @produce.price.to_s + "/lb" %> 
+				<br>
+				<%= @produce.sale_message %>
+				<br>
+				Tax: <%= @produce.tax %> 
+				<br>
+				Total: <%= @produce.total %> 
+				<br>
+				Description: <%= @produce.description %> 
+				<br>
+				Supplier: <%= @produce.supplier.name.capitalize %>
+				<br> 
+			 	<%=link_to "update item?", "/products/#{@produce.id}/edit" %>
+				<%= form_tag "/products/#{@produce.id}", method: :delete do %>
+					Would you like to delete this product? 
+					<br>
+					<input type="submit"  value="DELETE PRODUCT">
+				<%end%>
+			</div>
+		</div>
+	</div>
